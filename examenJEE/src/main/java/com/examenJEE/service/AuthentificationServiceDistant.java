@@ -1,0 +1,28 @@
+package com.examenJEE.service;
+
+import java.util.List;
+
+import javax.ejb.Local;
+
+import com.examenJEE.controller.Admin;
+import com.examenJEE.entities.Administrateur;
+import com.examenJEE.entities.Etudiant;
+import com.examenJEE.entities.Utilisateur;
+
+@Local
+public interface AuthentificationServiceDistant {
+	public Utilisateur authentifier(String login, String pwd);
+	boolean existeEmail(String login);
+	void sauvegarderUtilisateur(Utilisateur utilisateur);
+	public List<Administrateur> listeAdmin();
+	public List<Administrateur> listeAdminRechercher(String adminRechercher);
+	List<Etudiant> listerEtudiants();
+	void descativerUtilisateur(int id);
+	void acativerUtilisateur(int id);
+	void ajouterEtudiant(Integer id,String nom,String prenom,String mail,String password,boolean actif);
+	public void ajouterAdmin(Integer id,String mail,String password,boolean actif);
+	void supprimerUtilisateur(int id);
+	public void updateUtilisateur(String type,Integer id,String nom,String prenom,String mail,String password,boolean actif);
+	public Utilisateur chercherUtilisateurAvecId(int id);
+	public List<Etudiant> listerEtudiantsRechercher(String nom);
+}
